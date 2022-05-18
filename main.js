@@ -12,8 +12,6 @@ window.onload = () =>{
 
   const startNumImg = +document.cookie || Math.floor((Math.random() * backgroungImages.length));
   let curImgIndex = startNumImg;
-  console.log(curImgIndex, document.cookie, backgroungImages.length);
-
   
   const image = $('.slide');
   
@@ -23,7 +21,6 @@ window.onload = () =>{
   let six = setInterval(function(){
     image.fadeOut(1000, () => {
       image.css('background-image', 'url(' + backgroungImages [++curImgIndex] +')');
-      console.log(curImgIndex, steps);
       image.fadeIn(1000);
     });
 
