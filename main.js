@@ -1,20 +1,35 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // your code here
+window.onload = () =>{
+  const backgroungImages = [
+    './src/images/qcrm-login-page-00.jpg',
+    './src/images/qcrm-login-page-01.jpg',
+    './src/images/qcrm-login-page-02.jpg',
+    './src/images/qcrm-login-page-03.jpg',
+    './src/images/qcrm-login-page-04.jpg',
+    './src/images/qcrm-login-page-05.jpg',
+    './src/images/qcrm-login-page-06.jpg',
+    './src/images/qcrm-login-page-07.jpg'
+  ];
 
-// window.onload = function () {
-  const divImg = document.querySelector('.slide');
-  // get last image number as a started number from cookie if it is empty - set it random
-  const startNumImg = +document.cookie.split('=')[1] || Math.floor((Math.random() * 7));
-  let i = startNumImg;
-  // fill an mani div with images
-  // in the common (non training) task - we need to make an array of images from folder and operate index of recived array
-  // but here for simplicity - it is just names of files (from 0 to 7)
-  for (; i<=(startNumImg+7); i++){
-    const childImgDiv = document.createElement('div');
-    childImgDiv.style = 'background-image: url(./src/images/qcrm-login-page-0' + (i<=7 ? i : i-8) +'.jpg)';
-    divImg.append(childImgDiv);
-  }
-  //remember last index in cookie
-  document.cookie = `startNumImg=${(i<8 ? i+1 : i-9)}`;
-// };
-}, false);
+  const startNumImg = +document.cookie || Math.floor((Math.random() * backgroungImages.length));
+  let curImgIndex = startNumImg;
+  console.log(curImgIndex, document.cookie, backgroungImages.length);
+
+  
+  const image = $('.slide');
+  
+  image.css('background-image', 'url(' + backgroungImages [curImgIndex] +')');
+
+  let steps=0; 
+  let six = setInterval(function(){
+    image.fadeOut(1000, () => {
+      image.css('background-image', 'url(' + backgroungImages [++curImgIndex] +')');
+      console.log(curImgIndex, steps);
+      image.fadeIn(1000);
+    });
+
+    if(curImgIndex > backgroungImages.length-2) {curImgIndex = 0;}
+    
+    document.cookie = curImgIndex+1;
+    if (steps++ > 4) {clearInterval(six)};
+  }, 5000);
+};
