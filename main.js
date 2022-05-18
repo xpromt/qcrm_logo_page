@@ -28,5 +28,5 @@ window.onload = () =>{
     
     document.cookie = curImgIndex+1;
     if (steps++ > 4) {clearInterval(six)};
-  }, 5000);
+  }, 10000);
 };

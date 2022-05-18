@@ -51,6 +51,13 @@ form h3 {
     text-align: center;
 }
 
+.slide {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+}
+
 .form-logo {
     width: 100px;
     height: 100px;
@@ -153,10 +160,3 @@ form h3 {
     border-radius: 5px;
     cursor: pointer;
 }
-
-.slide {
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-    background-color: gray;
-  }
